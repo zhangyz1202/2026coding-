@@ -1,0 +1,14 @@
+# week12-1b.py 學習計畫 Graph - DFS 第1題 Medium 題
+# 房間裡有鑰匙，可以再開新的房間，最後能開全部房間嗎
+# DFS : Depth First Search 通常利用 stack funvtion stack (函式呼叫函式)
+class Solution:
+    def canVisitAllRooms(self, rooms: List[List[int]]) -> bool:
+        visited = set()
+        def helper(now):
+            for k in rooms[now]:
+                if k not in visited:
+                   visited.add(k)
+                   helper(k)
+        visited.add(0)
+        helper(0)
+        return len(rooms) == len(visited)
